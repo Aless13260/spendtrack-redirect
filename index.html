@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Returning to SpendTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #07140e; --fg: #eaf5ee; --accent: #c6f432; --muted: #8fb3a0; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid; place-items: center; text-align: center; padding: 24px;
+      font-family: "Bricolage Grotesque", sans-serif; color: var(--fg);
+      background: radial-gradient(40rem 24rem at 80% -10%, #c6f43222, transparent 60%), var(--bg);
+    }
+    h1 { font-size: 3rem; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.03em; }
+    p { font-weight: 200; color: var(--muted); margin: 0 0 28px; }
+    a {
+      display: inline-block; padding: 14px 28px; border-radius: 16px; font-weight: 800;
+      background: var(--accent); color: #11200a; text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Nearly there</h1>
+    <p>Taking you back to SpendTrack…</p>
+    <a id="open" href="spendtrack://callback">Open SpendTrack</a>
+  </main>
+  <script>
+    // Forward everything the bank sent (code, state, error) to the app, untouched.
+    var target = "spendtrack://callback" + window.location.search;
+    document.getElementById("open").href = target;
+    window.location.replace(target);
+  </script>
+</body>
+</html>
